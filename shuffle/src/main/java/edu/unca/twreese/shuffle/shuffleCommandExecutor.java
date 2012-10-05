@@ -23,12 +23,14 @@ public class shuffleCommandExecutor implements CommandExecutor {
      * On command set the sample message
      */
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender.hasPermission("sample.message") && args.length > 0) {
-            this.plugin.getConfig().set("sample.message", Joiner.on(' ').join(args));
-            return true;
-        } else {
-            return false;
+        if (args.length == 0){
+        	return false;
         }
+        if (args[0].equalsIgnoreCase("shuf")){
+        	sender.sendMessage("shuf was called again");
+        	return true;
+        }
+        return false;
     }
 
 }

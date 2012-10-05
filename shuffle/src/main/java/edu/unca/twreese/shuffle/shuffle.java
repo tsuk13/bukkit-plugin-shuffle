@@ -18,7 +18,7 @@ public class shuffle extends JavaPlugin {
         new shuffleListener(this);
         
         // set the command executor for sample
-        this.getCommand("sample").setExecutor(new shuffleCommandExecutor(this));
+        this.getCommand("shuffle").setExecutor(new shuffleCommandExecutor(this));
     }
     
     /*

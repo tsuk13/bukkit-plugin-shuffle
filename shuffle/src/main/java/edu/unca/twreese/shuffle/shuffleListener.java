@@ -29,7 +29,7 @@ public class shuffleListener implements Listener {
      */
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage(this.plugin.getConfig().getString("sample.message"));
+        event.getPlayer().sendMessage(this.plugin.getConfig().getString("shuffle.message"));
     }
     
     /*

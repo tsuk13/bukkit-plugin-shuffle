@@ -6,14 +6,14 @@ version: ${project.version}
 author: SampleAuthor
 description: ${project.description}
 commands:
-  sample:
+  shuffle:
     description: set the sample message
-    usage: /<command> message
-    permission: sample.message
+    usage: /<command>
+    permission: shuffle.shuf
 permissions:
-  sample.*:
-    description: gives all permissions of the SamplePlugin
-    default: op
+  shuffle.*:
+    description: gives all permissions of the shufflePlugin
+    default: true
     children:
-      sample.message:
+      shuffle.shuf:
         description: gives permission to set the sample message using the sample command
