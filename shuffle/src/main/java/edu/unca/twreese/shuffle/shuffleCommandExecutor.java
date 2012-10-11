@@ -30,7 +30,7 @@ public class shuffleCommandExecutor implements CommandExecutor {
         if (args.length == 0){
         	return false;
         }
-        if (args[0].equalsIgnoreCase("shuf") && sender instanceof Player){
+        else if (args[0].equalsIgnoreCase("shuf") && sender instanceof Player){
         	sender.sendMessage("shuf was called again");
         	Player player = (Player) sender;
         	Location loc = player.getLocation();
@@ -39,6 +39,12 @@ public class shuffleCommandExecutor implements CommandExecutor {
         	loc.setZ(loc.getZ() - 500 + (rnd.nextDouble() * 1000));
         	loc.setY(player.getWorld().getHighestBlockYAt(loc));
         	player.teleport(loc);
+        	return true;
+        }
+        else if (args[0].equalsIgnoreCase("rain") && sender instanceof Player){
+        	sender.sendMessage("MAKE It RAIN!!!");
+        	Player player = (Player) sender;
+        	player.getWorld().setStorm(true);
         	return true;
         }
         return false;

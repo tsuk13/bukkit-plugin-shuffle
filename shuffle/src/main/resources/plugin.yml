@@ -16,4 +16,6 @@ permissions:
     default: true
     children:
       shuffle.shuf:
-        description: gives permission to set the sample message using the sample command
+        description: Randomly Teleports you within 500 blocks
+      shuffle.rain:
+        description: Make it rain!
