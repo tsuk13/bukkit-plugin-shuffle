@@ -2,10 +2,12 @@ package edu.unca.twreese.shuffle;
 
 import java.util.Random;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.Player;
 
 import com.google.common.base.Joiner;
@@ -45,6 +47,12 @@ public class shuffleCommandExecutor implements CommandExecutor {
         	sender.sendMessage("MAKE It RAIN!!!");
         	Player player = (Player) sender;
         	player.getWorld().setStorm(true);
+        	return true;
+        }
+        else if (args[0].equalsIgnoreCase("oprahpig") && args.length == 2){
+        	Player player = Bukkit.getPlayer(args[1]);
+        	player.getWorld().spawnCreature(player.getLocation(), CreatureType.PIG);
+        	player.sendMessage("YOU GET A PIG!!!!");
         	return true;
         }
         return false;

@@ -19,3 +19,5 @@ permissions:
         description: Randomly Teleports you within 500 blocks
       shuffle.rain:
         description: Make it rain!
+      shuffle.oprahpig:
+        description: Gives the player you type in after a pig
