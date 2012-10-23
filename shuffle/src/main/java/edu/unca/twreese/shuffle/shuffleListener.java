@@ -17,6 +17,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
  */
 public class shuffleListener implements Listener {
     private final shuffle plugin;
+    private final int worldSize = 200; //defines how many blocks a side of the square you are restricted you in this mod is
 
     /*
      * This listener needs to know about the plugin which it came from
@@ -55,8 +56,8 @@ public class shuffleListener implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent event){
     	Location loc = new Location(event.getPlayer().getWorld(), 0, 0, 0);
     	Random rnd = new Random();
-    	loc.setX(loc.getX() - 500 + (rnd.nextDouble() * 1000));
-    	loc.setZ(loc.getZ() - 500 + (rnd.nextDouble() * 1000));
+    	loc.setX(loc.getX() - (worldSize/2) + (rnd.nextDouble() * worldSize));
+    	loc.setZ(loc.getZ() - (worldSize/2) + (rnd.nextDouble() * worldSize));
     	loc.setY(event.getPlayer().getWorld().getHighestBlockYAt(loc));
     	event.setRespawnLocation(loc);
     }
@@ -64,7 +65,7 @@ public class shuffleListener implements Listener {
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event){
     	Location dest = event.getTo();
-    	if(dest.getBlockX() > 500 || dest.getBlockX() < -500 || dest.getBlockZ() > 500 || dest.getBlockZ() < -500){
+    	if(dest.getBlockX() > (worldSize/2) || dest.getBlockX() < -(worldSize/2) || dest.getBlockZ() > (worldSize/2) || dest.getBlockZ() < -(worldSize/2)){
     		event.getPlayer().teleport(event.getFrom());
     	}
     	
