@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 
 /*
@@ -52,11 +53,20 @@ public class shuffleListener implements Listener {
     
     @EventHandler
     public void onPlayerRespawn(PlayerRespawnEvent event){
-    	Location loc = event.getRespawnLocation();
+    	Location loc = new Location(event.getPlayer().getWorld(), 0, 0, 0);
     	Random rnd = new Random();
     	loc.setX(loc.getX() - 500 + (rnd.nextDouble() * 1000));
     	loc.setZ(loc.getZ() - 500 + (rnd.nextDouble() * 1000));
     	loc.setY(event.getPlayer().getWorld().getHighestBlockYAt(loc));
     	event.setRespawnLocation(loc);
+    }
+    
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event){
+    	Location dest = event.getTo();
+    	if(dest.getBlockX() > 500 || dest.getBlockX() < -500 || dest.getBlockZ() > 500 || dest.getBlockZ() < -500){
+    		event.getPlayer().teleport(event.getFrom());
+    	}
+    	
     }
 }
