@@ -1,12 +1,15 @@
 package edu.unca.twreese.shuffle;
 
 import java.text.MessageFormat;
+import java.util.Random;
 
+import org.bukkit.Location;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerRespawnEvent;
 
 /*
  * This is a sample event listener
@@ -45,5 +48,15 @@ public class shuffleListener implements Listener {
                 "You interacted with a {0} it has an id of {1}",
                 entityType.getName(),
                 entityType.getTypeId()));
+    }
+    
+    @EventHandler
+    public void onPlayerRespawn(PlayerRespawnEvent event){
+    	Location loc = event.getRespawnLocation();
+    	Random rnd = new Random();
+    	loc.setX(loc.getX() - 500 + (rnd.nextDouble() * 1000));
+    	loc.setZ(loc.getZ() - 500 + (rnd.nextDouble() * 1000));
+    	loc.setY(event.getPlayer().getWorld().getHighestBlockYAt(loc));
+    	event.setRespawnLocation(loc);
     }
 }
